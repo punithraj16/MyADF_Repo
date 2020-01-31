@@ -1,0 +1,19 @@
+{
+	"name": "adls2_dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "myoutputfile2.csv",
+				"folderPath": "My Directory",
+				"fileSystem": "testcontainer"
+			}
+		}
+	}
+}

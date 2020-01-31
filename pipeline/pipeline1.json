@@ -22,14 +22,9 @@
 						"requestMethod": "GET"
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
+						"type": "BinarySink",
 						"storeSettings": {
 							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
 						}
 					},
 					"enableStaging": false
@@ -42,7 +37,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "datalake_dataset",
+						"referenceName": "adls2_dataset",
 						"type": "DatasetReference"
 					}
 				]
