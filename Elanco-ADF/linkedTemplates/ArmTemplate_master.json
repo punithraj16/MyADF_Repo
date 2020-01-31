@@ -1,0 +1,139 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "Elanco-ADF"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"AzureDataLakeStorage2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage2'"
+		},
+		"AzureDataLakeStorage3_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage3'"
+		},
+		"adlsconn_rest_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'adlsconn_rest'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://elancoclinicaldls.dfs.core.windows.net"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://elancoclinicaldls.dfs.core.windows.net"
+		},
+		"AzureDataLakeStorage3_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://elancoclinicaldls.dfs.core.windows.net"
+		},
+		"RestConn1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "http://dummy.restapiexample.com/api/v1/employees"
+		},
+		"adlsconn_rest_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://elancoclinicaldls.dfs.core.windows.net"
+		},
+		"adlsconn_rest_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "441a3c46-e74b-4a57-b4e3-2c0fdb59b1fd"
+		},
+		"adlsconn_rest_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "61fa2f4d-2d97-4c1f-9f95-523c74ad9438"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"AzureDataLakeStorage2_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage2_accountKey')]"
+					},
+					"AzureDataLakeStorage3_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage3_accountKey')]"
+					},
+					"adlsconn_rest_servicePrincipalKey": {
+						"value": "[parameters('adlsconn_rest_servicePrincipalKey')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorage2_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage2_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorage3_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage3_properties_typeProperties_url')]"
+					},
+					"RestConn1_properties_typeProperties_url": {
+						"value": "[parameters('RestConn1_properties_typeProperties_url')]"
+					},
+					"adlsconn_rest_properties_typeProperties_url": {
+						"value": "[parameters('adlsconn_rest_properties_typeProperties_url')]"
+					},
+					"adlsconn_rest_properties_typeProperties_tenant": {
+						"value": "[parameters('adlsconn_rest_properties_typeProperties_tenant')]"
+					},
+					"adlsconn_rest_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('adlsconn_rest_properties_typeProperties_servicePrincipalId')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'ArmTemplate_0')]"
+			]
+		}
+	]
+}

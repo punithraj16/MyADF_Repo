@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "Elanco-ADF"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage2_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage3_accountKey": {
+			"value": ""
+		},
+		"adlsconn_rest_servicePrincipalKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://elancoclinicaldls.dfs.core.windows.net"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"value": "https://elancoclinicaldls.dfs.core.windows.net"
+		},
+		"AzureDataLakeStorage3_properties_typeProperties_url": {
+			"value": "https://elancoclinicaldls.dfs.core.windows.net"
+		},
+		"RestConn1_properties_typeProperties_url": {
+			"value": "http://dummy.restapiexample.com/api/v1/employees"
+		},
+		"adlsconn_rest_properties_typeProperties_url": {
+			"value": "https://elancoclinicaldls.dfs.core.windows.net"
+		},
+		"adlsconn_rest_properties_typeProperties_tenant": {
+			"value": "441a3c46-e74b-4a57-b4e3-2c0fdb59b1fd"
+		},
+		"adlsconn_rest_properties_typeProperties_servicePrincipalId": {
+			"value": "61fa2f4d-2d97-4c1f-9f95-523c74ad9438"
+		}
+	}
+}
