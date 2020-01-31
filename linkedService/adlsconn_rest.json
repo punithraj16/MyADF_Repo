@@ -8,7 +8,7 @@
 			"url": "https://elancoclinicaldls.dfs.core.windows.net",
 			"tenant": "441a3c46-e74b-4a57-b4e3-2c0fdb59b1fd",
 			"servicePrincipalId": "61fa2f4d-2d97-4c1f-9f95-523c74ad9438",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkVMQU5DTy1BREZfYWExMzc2MjUtOWFiOC00MzNkLWI1ZWMtZjk1Mjg0NDk5MTZlIg0KfQ=="
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkVMQU5DTy1BREZfNjIyMjdkODEtNTY4Yi00ZThlLTkxNzAtY2M4ZjkzM2FkN2FhIg0KfQ=="
 		}
 	}
 }
