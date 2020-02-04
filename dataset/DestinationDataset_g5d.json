@@ -1,8 +1,8 @@
 {
-	"name": "datalake_dataset",
+	"name": "DestinationDataset_g5d",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "adlsconn_rest",
+			"referenceName": "AzureDataLakeStorage2",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,13 +10,12 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "myoutputfile.csv",
-				"folderPath": "My Directory",
-				"fileSystem": "testcontainer"
+				"fileName": "csv",
+				"folderPath": "StudyID/Cycle1/SAS_Output_Files",
+				"fileSystem": "teststore"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
-			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": []
