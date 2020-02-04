@@ -1,0 +1,425 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name"
+		},
+		"RestConnGit": {
+			"type": "string"
+		},
+		"AzureDataLakeStorageGIT": {
+			"type": "string"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline2')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:01:40",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET"
+							},
+							"sink": {
+								"type": "JsonSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "JsonWriteSettings",
+									"quoteAllText": true
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['name']"
+										},
+										"sink": {
+											"path": "$['name']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['version']"
+										},
+										"sink": {
+											"path": "$['version']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['description']"
+										},
+										"sink": {
+											"path": "$['description']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['keywords'][0]"
+										},
+										"sink": {
+											"path": "$['keywords'][0]"
+										}
+									},
+									{
+										"source": {
+											"path": "$['main']"
+										},
+										"sink": {
+											"path": "$['main']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['scripts']['test']"
+										},
+										"sink": {
+											"path": "$['scripts']['test']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['scripts']['version']"
+										},
+										"sink": {
+											"path": "$['scripts']['version']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['scripts']['build']"
+										},
+										"sink": {
+											"path": "$['scripts']['build']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['scripts']['publish']"
+										},
+										"sink": {
+											"path": "$['scripts']['publish']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['bin']['fetcher']"
+										},
+										"sink": {
+											"path": "$['bin']['fetcher']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['bin']['github-files-fetcher']"
+										},
+										"sink": {
+											"path": "$['bin']['github-files-fetcher']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['author']"
+										},
+										"sink": {
+											"path": "$['author']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['license']"
+										},
+										"sink": {
+											"path": "$['license']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['repository']['type']"
+										},
+										"sink": {
+											"path": "$['repository']['type']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['repository']['url']"
+										},
+										"sink": {
+											"path": "$['repository']['url']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['bugs']['url']"
+										},
+										"sink": {
+											"path": "$['bugs']['url']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['homepage']"
+										},
+										"sink": {
+											"path": "$['homepage']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['dependencies']['@babel/polyfill']"
+										},
+										"sink": {
+											"path": "$['dependencies']['@babel/polyfill']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['dependencies']['@gyumeijie/cli-progress']"
+										},
+										"sink": {
+											"path": "$['dependencies']['@gyumeijie/cli-progress']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['dependencies']['args-parser']"
+										},
+										"sink": {
+											"path": "$['dependencies']['args-parser']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['dependencies']['axios']"
+										},
+										"sink": {
+											"path": "$['dependencies']['axios']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['dependencies']['colors']"
+										},
+										"sink": {
+											"path": "$['dependencies']['colors']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['dependencies']['is-online']"
+										},
+										"sink": {
+											"path": "$['dependencies']['is-online']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['dependencies']['shelljs']"
+										},
+										"sink": {
+											"path": "$['dependencies']['shelljs']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['devDependencies']['@babel/core']"
+										},
+										"sink": {
+											"path": "$['devDependencies']['@babel/core']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['devDependencies']['@babel/preset-env']"
+										},
+										"sink": {
+											"path": "$['devDependencies']['@babel/preset-env']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['devDependencies']['babel-loader']"
+										},
+										"sink": {
+											"path": "$['devDependencies']['babel-loader']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['devDependencies']['copy-webpack-plugin']"
+										},
+										"sink": {
+											"path": "$['devDependencies']['copy-webpack-plugin']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['devDependencies']['cz-conventional-changelog']"
+										},
+										"sink": {
+											"path": "$['devDependencies']['cz-conventional-changelog']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['devDependencies']['eslint']"
+										},
+										"sink": {
+											"path": "$['devDependencies']['eslint']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['devDependencies']['eslint-config-airbnb']"
+										},
+										"sink": {
+											"path": "$['devDependencies']['eslint-config-airbnb']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['devDependencies']['eslint-plugin-import']"
+										},
+										"sink": {
+											"path": "$['devDependencies']['eslint-plugin-import']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['devDependencies']['eslint-plugin-jsx-a11y']"
+										},
+										"sink": {
+											"path": "$['devDependencies']['eslint-plugin-jsx-a11y']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['devDependencies']['eslint-plugin-react']"
+										},
+										"sink": {
+											"path": "$['devDependencies']['eslint-plugin-react']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['devDependencies']['webpack']"
+										},
+										"sink": {
+											"path": "$['devDependencies']['webpack']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['devDependencies']['webpack-cli']"
+										},
+										"sink": {
+											"path": "$['devDependencies']['webpack-cli']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['devDependencies']['write-to-file-webpack']"
+										},
+										"sink": {
+											"path": "$['devDependencies']['write-to-file-webpack']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['config']['commitizen']['path']"
+										},
+										"sink": {
+											"path": "$['config']['commitizen']['path']"
+										}
+									}
+								]
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "RestResource2",
+								"type": "DatasetReference"
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "GIT_JSON",
+								"type": "DatasetReference"
+							}
+						]
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/RestResource2')]",
+				"[concat(variables('factoryId'), '/datasets/GIT_JSON')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/RestResource2')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "[parameters('RestConnGit')]",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "RestResource",
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/GIT_JSON')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "[parameters('AzureDataLakeStorageGIT')]",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "output_git.json",
+						"folderPath": "Directory_Github",
+						"fileSystem": "testcontainer"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
