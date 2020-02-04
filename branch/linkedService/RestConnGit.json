@@ -1,0 +1,13 @@
+{
+	"name": "RestConnGit",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://raw.githubusercontent.com/Gyumeijie/github-files-fetcher/master/package.json",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}

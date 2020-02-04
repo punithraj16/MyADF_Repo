@@ -1,0 +1,25 @@
+{
+	"name": "datalake_dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlsconn_rest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "myoutputfile.csv",
+				"folderPath": "My Directory",
+				"fileSystem": "testcontainer"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
